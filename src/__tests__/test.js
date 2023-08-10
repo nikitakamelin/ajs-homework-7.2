@@ -1,7 +1,7 @@
 import ErrorRepository from '../js/ErrorRepository';
 
 //! ---------------Тестируем try/catch ------------------------------------
-test('ErrorRepository try/catch testing', () => {
+test('ErrorRepository Not a Number testing', () => {
   expect(() => {
     new ErrorRepository('3545345', 'Какая-то известная ошибка');
   })
@@ -11,9 +11,11 @@ test('ErrorRepository try/catch testing', () => {
 
 test('ErrorRepository Constructor test', () => {
   const error = new ErrorRepository(3545345, 'Какая-то известная ошибка');
-  const result = { errorCode: 3545345, errorMessage: 'Какая-то известная ошибка' };
 
-  expect(result).toEqual(error);
+  //! --- Если хотим проверить, правильно ли установлены свойства, 
+  //! --- мы должны сравнивать их напрямую
+  expect(error.errorCode).toEqual(3545345);
+  expect(error.errorMessage).toEqual('Какая-то известная ошибка');
 });
 
 test('ErrorRepository translate(known_code) test', () => {
